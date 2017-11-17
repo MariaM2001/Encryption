@@ -1,1 +1,29 @@
 
+class Cod: 
+    def __init__(self,k):
+        self.k = k
+
+    def encode(self, n): 
+        self.n = n
+        st = ''
+        for i in self.n: 
+            ch = ord(i)
+            if (ch in range(65, 90-self.k+1)) or (ch in range (97, 122 - self.k+1)) : 
+                st = st + chr(ch + self.k) 
+            else:
+                st = st + chr(ord(i)-26+self.k) 
+        print(st)
+
+    def decode(self, n): 
+        self.n = n
+        st = ''
+        for i in self.n: 
+            ch = ord(i)
+            if (ch in range (65 +self.k, 91)) or (ch in range(97 + self.k, 123)): 
+                st = st + chr(ch - self.k) 
+            else: 
+                st = st + chr(ord(i)+26-self.k) 
+        print(st)
+            
+per = Cod(3)
+per.encode("Hello World")
