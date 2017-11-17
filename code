@@ -26,4 +26,4 @@ class Cod:
         print(st)
             
 per = Cod(3)
-per.encode("Hello World")
+per.encode("abcABCxyzXYZ")
