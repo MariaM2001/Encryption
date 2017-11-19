@@ -3,26 +3,28 @@ class Cod:
         self.k = k
 
     def encode(self, n): 
-        self.n = n
         st = ''
-        for i in self.n: 
+        for i in n: 
             ch = ord(i)
             if (ch >= 65 and ch <= 90-self.k) or (ch >= 97 and ch <= 122-self.k):
                 st = st + chr(ch + self.k) 
-            else:
-                st = st + chr(ord(i)-26+self.k) 
+            if (ch > 90 - self.k and ch <=90) or (ch > 122 - self.k and ch <=122):
+                st = st + chr(ch-26+self.k) 
+            if (ch < 65) or (ch > 90 and ch < 97) or (ch > 122):
+                st = st + chr(ch)
         print(st)
 
     def decode(self, n): 
-        self.n = n
         st = ''
-        for i in self.n: 
+        for i in n: 
             ch = ord(i)
             if (ch >= 65+self.k and ch <= 90) or (ch >= 97+self.k and ch <= 122):
                 st = st + chr(ch - self.k) 
-            else: 
-                st = st + chr(ord(i)+26-self.k) 
+            if (ch >= 65 and ch < 65 + self.k) or (ch >= 97 and ch < 97 + self.k): 
+                st = st + chr(ch +26-self.k) 
+            if (ch < 65) or (ch > 90 and ch < 97) or (ch > 122):
+                st = st + chr(ch)
         print(st)
             
 per = Cod(3)
-per.decode("defDEFabcABC")
+per.decode("defDEFabcABC   ,.")
